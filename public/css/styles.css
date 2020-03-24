@@ -1,0 +1,46 @@
+.error-box{
+  color:red;
+}
+.error-box::before{
+  content: '*';
+}
+.info-box{
+  color:green;
+}
+
+table{
+  border-collapse:collapse;
+  border-spacing:0;
+}
+
+
+li>label:firstchild{width:170px;margin-right:20px;float: left}
+
+.container{
+  margin: 0 auto;
+  width:800px;
+}
+
+.nav{
+  margin: 0 auto;
+  width: 300px;
+}
+
+.container h1{
+  display: inline-block;
+}
+.container .loggedInUser{
+  color:rgb(45, 199, 160);
+  margin-left: 20px;
+}
+
+.messageContent{
+  font-size: 13px;
+}
+
+.nav-link{
+  color: rgb(113, 122, 120);
+}
+.nav-link a:hover{
+  color: rgb(126, 110, 71);
+}

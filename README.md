@@ -39,15 +39,7 @@ php artisan migrate
 
 #### NOW YOU'RE READY TO GO!!
 
-
-新規登録画面で自分の情報を登録します
-<img width="722" alt="3" src="https://user-images.githubusercontent.com/54580808/83402590-082a2d00-a442-11ea-9d1c-324f37ae40eb.png">
-
-ログイン画面でログインします
-<img width="722" alt="1" src="https://user-images.githubusercontent.com/54580808/83402731-3f98d980-a442-11ea-98c6-6037a7897189.png">
-</p>
-
-入力画面が出てくるので管理したい、個人の情報（名前、パスワード、会社名、生年月日を入力し登録します）
+ログイン後入力画面が出てくるので管理したい、個人の情報（名前、パスワード、会社名、生年月日を入力し登録します）
 <img width="1119" alt="4" src="https://user-images.githubusercontent.com/54580808/83403059-e3828500-a442-11ea-896a-989766478856.png">
 </p>
 

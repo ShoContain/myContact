@@ -27,15 +27,14 @@
                 <p class="pl-6 text-xl">{{contact.name}}</p>
             </div>
 
-            <p　class="pt-8 text-gray-600 text-bold text-sm">メール</p>
+            <p　class="pt-8 text-gray-600 font-bold text-sm">メール</p>
             <p class="text-blue-400 font-bold border-b py-2">{{contact.email}}</p>
 
-            <p class="pt-8 text-gray-600 text-bold text-sm">会社名</p>
+            <p class="pt-8 text-gray-600 font-bold text-sm">会社名</p>
             <p class="text-blue-400 font-bold border-b py-2 tracking-wider">{{contact.company}}</p>
 
-            <p class="pt-8 text-gray-600 text-bold text-sm">誕生日</p>
+            <p class="pt-8 text-gray-600 font-bold text-sm">誕生日</p>
             <p class="text-blue-400 font-bold border-b py-2">{{contact.birthday}}</p>
-            {{$route.params.id}}
         </div>
     </div>
 </template>
@@ -48,18 +47,8 @@ export default {
         UserCircle,
     },
     mounted() {
-        axios.get('/api/contacts/' + this.$route.params.id)
-            .then(response => {
-                this.contact = response.data.data;
-                this.loading = false;
-            })
-            .catch(error => {
-                this.loading = false;
-                if (error.response.status === 404) {
-                    this.$router.push('/contacts');
-                }
-            });
-    },
+        this.fetchContact()
+        },
     data: function() {
         return {
             loading: true,
@@ -67,7 +56,27 @@ export default {
             contact: null,
         }
     },
+    watch: {
+        $route(to, from) {
+           if(to.params.id !=from.params.id){
+               this.fetchContact()
+           }
+        }
+    },
     methods: {
+        fetchContact(){
+            axios.get('/api/contacts/' + this.$route.params.id)
+                .then(response => {
+                    this.contact = response.data.data;
+                    this.loading = false;
+                })
+                .catch(error => {
+                    this.loading = false;
+                    if (error.response.status === 404) {
+                        this.$router.push('/contacts');
+                    }
+                });
+        },
         destroy() {
             axios.delete('/api/contacts/' + this.$route.params.id)
                 .then(response => {

@@ -5,7 +5,7 @@
       </div>
       <div v-else>
           <div v-if="contacts.length ===0">
-              まだデータがありません。
+              今月誕生日の人はいません
               <router-link to="/contacts/create">データを作成する</router-link>
           </div>
 

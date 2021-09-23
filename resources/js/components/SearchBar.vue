@@ -9,13 +9,13 @@
                     clip-rule="evenodd" />
               </svg>
           </div>
-          <input class="w-64 mr-6 bg-gray-400  pl-8 text-gray-700 rounded-md focus:outline-none" type="text" placeholder="Search..." id="searchTerm" v-model="searchTerm" @input="search" @focus="focus=true">
+          <input class="w-64 mr-6 bg-gray-300  pl-8 text-gray-700 rounded-md focus:outline-none" type="text" placeholder="Search..." id="searchTerm" v-model="searchTerm" @input="search" @focus="focus=true">
 
           <div v-if="focus" class="absolute bg-blue-900 rouded-lg p-4 w-96 right-0 mr-6 mt-2 shadow z-20">
               <div v-if='results == 0' class="text-white">検索結果が該当しませんでした。</div>
               <div v-else>
                   <p class="text-white">{{results.length}}件ヒットしました</p>
-                  <div class="" v-for="result in results" @click="focus=false">
+                  <div class="" v-for="result in results" :key="result.data.contact_id" @click="focus=false">
                       <router-link :to="result.links.self" class="block py-2 hover:no-underline">
                           <div class="flex items-center border-b border-solid border-gray-100">
                               <UserCircle :name="result.data.name"/>
@@ -50,7 +50,7 @@
       },
       methods: {
           search: _.debounce(function(e) {
-              if (this.searchTerm.length < 3) {
+              if (this.searchTerm.length < 1) {
                   return;
               }
               axios.post('/api/search', {
@@ -62,7 +62,7 @@
                   .catch(error => {
                       console.log(error.response);
                   });
-          }, 300)
+          }, 500)
       },
   }
   </script>
